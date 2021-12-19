@@ -15,11 +15,11 @@ class Command(BaseCommand):
 
         for phone in phones:
             new_phone = Phone.objects.create(
-                id=int(phone[0]),
-                name=phone[1],
-                price=int(phone[2]),
-                image=phone[3],
-                release_date=phone[4],
-                lte_exists=phone[5],
-                slug=slugify(phone[1])
+                id=int(phone['id']),
+                name=phone['name'],
+                price=int(phone['price']),
+                image=phone['image'],
+                release_date=phone['release_date'],
+                lte_exists=phone['lte_exists'],
+                slug=slugify(phone['name'])
             )
