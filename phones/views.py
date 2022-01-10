@@ -11,6 +11,12 @@ def show_catalog(request):
     template = 'catalog.html'
     sort_pages = request.GET.get('sort')
     all_phones = Phone.objects.all()
+    if sort_pages == 'min_price':
+        all_phones = all_phones.order_by('price')
+    elif sort_pages == 'max_price':
+        all_phones = all_phones.order_by('-price')
+    elif sort_pages == 'name':
+        all_phones = all_phones.order_by('name')
     context = {'phones': all_phones}
     return render(request, template, context)
 
